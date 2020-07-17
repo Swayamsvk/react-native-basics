@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+  Image,
+  SafeAreaView,
+  Button,
+  Platform,
+  StatusBar,
+} from "react-native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
+      <Button title="Click me" onPress={() => alert("Button tapped")} />
+      <Text onPress={() => console.log("Text pressed")}>
+        Hello React Native
+      </Text>
+
+      <TouchableWithoutFeedback onPress={() => console.log("Image Tapped")}>
+        <Image source={require("./assets/icon.png")} />
+      </TouchableWithoutFeedback>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "dodgerblue",
+
+    paddingTop: Platform.OS === "android" ? 20 : 0,
   },
 });
